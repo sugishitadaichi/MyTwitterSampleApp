@@ -22,15 +22,23 @@ class ViewController: UIViewController {
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
-        let tweetPost = Tweet(text: "あいうえお")
-        tweetList.append(tweetPost)
+        let tweetPost1 = Tweet(text: "あいうえお")
+        tweetList.append(tweetPost1)
+        let tweetPost2 = Tweet(text: "かきくけこ")
+        tweetList.append(tweetPost2)
+        let tweetPost3 = Tweet(text: "さしすせそ")
+        tweetList.append(tweetPost3)
+        let tweetPost4 = Tweet(text: "たちつてと")
+        tweetList.append(tweetPost4)
+        let tweetPost5 = Tweet(text: "なにぬねの")
+        tweetList.append(tweetPost5)
     }
 
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 5
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
