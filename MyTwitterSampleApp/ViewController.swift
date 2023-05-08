@@ -31,6 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let dummyList = [ tweetPost1, tweetPost2, tweetPost3, tweetPost4, tweetPost5, ]
          dummyList.forEach { tweet in tweetList.append(tweet) }
+        
 
     }
     
@@ -40,8 +41,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
-        cell.label.text = "Swift"
-        let _: Tweet = tweetList[indexPath.row]
+        
+        let tweet = tweetList[indexPath.row]
+        cell.label.text = tweet.text
         return cell
     }
 
