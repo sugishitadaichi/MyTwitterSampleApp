@@ -41,8 +41,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
         cell.label.text = "Swift"
-        let tweet: Tweet = tweetList[indexPath.row]
-        cell.textLabel?.text = tweet.text
+        let _: Tweet = tweetList[indexPath.row]
         return cell
     }
 
