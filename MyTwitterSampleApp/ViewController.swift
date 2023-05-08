@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
     //ツイートプロパティ
     var tweetList: [Tweet] = []
@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         // setTweet関数をホーム画面が表示された際に反映させる
@@ -23,29 +24,26 @@ class ViewController: UIViewController {
     // ツイートを格納するためのメソッド
     func setTweet() {
         let tweetPost1 = Tweet(text: "あいうえお")
-        tweetList.append(tweetPost1)
         let tweetPost2 = Tweet(text: "かきくけこ")
-        tweetList.append(tweetPost2)
         let tweetPost3 = Tweet(text: "さしすせそ")
-        tweetList.append(tweetPost3)
         let tweetPost4 = Tweet(text: "たちつてと")
-        tweetList.append(tweetPost4)
         let tweetPost5 = Tweet(text: "なにぬねの")
-        tweetList.append(tweetPost5)
+        
+        let dummyList = [ tweetPost1, tweetPost2, tweetPost3, tweetPost4, tweetPost5, ]
+         dummyList.forEach { tweet in tweetList.append(tweet) }
+
     }
-
-}
-
-extension ViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return tweetList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
+        cell.label.text = "Swift"
         let tweet: Tweet = tweetList[indexPath.row]
         cell.textLabel?.text = tweet.text
         return cell
     }
-}
 
+}
