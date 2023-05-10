@@ -8,6 +8,7 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
+    @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
