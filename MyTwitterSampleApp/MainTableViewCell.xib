@@ -9,23 +9,23 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="MainTableViewCell" customModule="MyTwitterSampleApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="139" id="KGk-i7-Jjw" customClass="MainTableViewCell" customModule="MyTwitterSampleApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="139"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q0e-Et-H5I">
-                        <rect key="frame" x="79" y="10" width="241" height="24"/>
+                        <rect key="frame" x="6" y="30" width="305" height="98"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u8O-Ti-WkJ">
-                        <rect key="frame" x="6" y="10" width="57" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-h4-zwr">
+                        <rect key="frame" x="6" y="1" width="118" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -33,17 +33,16 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Q0e-Et-H5I" secondAttribute="bottom" constant="10" id="2yH-Cs-cCL"/>
                     <constraint firstAttribute="trailing" secondItem="Q0e-Et-H5I" secondAttribute="trailing" constant="20" id="76Q-gU-aGr"/>
-                    <constraint firstItem="Q0e-Et-H5I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="CFQ-yJ-0wz"/>
+                    <constraint firstItem="Q0e-Et-H5I" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="30" id="CFQ-yJ-0wz"/>
                     <constraint firstItem="Q0e-Et-H5I" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="H22-cw-AFW"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="UserName" destination="u8O-Ti-WkJ" id="fe9-a5-tOC"/>
                 <outlet property="label" destination="Q0e-Et-H5I" id="Tpe-TD-Oz4"/>
-                <outlet property="userName" destination="u8O-Ti-WkJ" id="4vq-wa-PEw"/>
+                <outlet property="userName" destination="uT7-h4-zwr" id="K1h-lW-WBO"/>
             </connections>
-            <point key="canvasLocation" x="138.93129770992365" y="19.718309859154932"/>
+            <point key="canvasLocation" x="138.93129770992365" y="53.169014084507047"/>
         </tableViewCell>
     </objects>
 </document>
