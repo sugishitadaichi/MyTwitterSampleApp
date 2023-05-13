@@ -23,11 +23,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
-        let tweetPost1 = Tweet(text: "あいうえお")
-        let tweetPost2 = Tweet(text: "かきくけこ")
-        let tweetPost3 = Tweet(text: "さしすせそ")
-        let tweetPost4 = Tweet(text: "たちつてと")
-        let tweetPost5 = Tweet(text: "なにぬねの")
+        let tweetPost1 = Tweet(text: "あいうえお", userName: "daichi")
+        let tweetPost2 = Tweet(text: "かきくけこ", userName: "saki")
+        let tweetPost3 = Tweet(text: "さしすせそ", userName: "yamato")
+        let tweetPost4 = Tweet(text: "たちつてと", userName: "makoto")
+        let tweetPost5 = Tweet(text: "なにぬねの", userName: "yoshihiro")
         
         let dummyList = [ tweetPost1, tweetPost2, tweetPost3, tweetPost4, tweetPost5, ]
          dummyList.forEach { tweet in tweetList.append(tweet) }
@@ -44,6 +44,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let tweet = tweetList[indexPath.row]
         cell.label.text = tweet.text
+        cell.userName.text = tweet.userName
         return cell
     }
 

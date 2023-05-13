@@ -10,4 +10,5 @@ import Foundation
 struct Tweet {
     // ツイート本文
     let text: String
+    let userName: String
 }
