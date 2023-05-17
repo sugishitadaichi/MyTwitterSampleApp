@@ -9,6 +9,13 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var addButton: UIButton!
+    @IBAction func addButton(_ sender: UIButton) {
+        //　transitionToTweetEditorView関数をボタンがタップされた際に実行させる
+        transitionToTweetEditorView()
+        
+    }
+    
     //ツイートプロパティ
     var tweetList: [Tweet] = []
     
@@ -20,6 +27,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView = UIView()
         // setTweet関数をホーム画面が表示された際に反映させる
         setTweet()
+        //　configureTweetButton関数をホーム画面が表示された際に反映させる
+        configureTweetButton()
+
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
@@ -46,6 +56,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.label.text = tweet.text
         cell.userName.text = tweet.userName
         return cell
+    }
+    //　ツイートボタンの仕様
+    func configureTweetButton() {
+        addButton.layer.cornerRadius = addButton.bounds.width / 2
+    }
+    //　ツイートボタンがタップされた際の処理
+    func transitionToTweetEditorView() {
+        print("ツイートボタンがタップされました")
     }
 
 }
