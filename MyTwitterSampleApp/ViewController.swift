@@ -53,6 +53,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! MainTableViewCell
         
         let tweet = tweetList[indexPath.row]
+        editorViewController.configure(memo: tweet)
         cell.label.text = tweet.text
         cell.userName.text = tweet.userName
         return cell
@@ -63,7 +64,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //　ツイートボタンがタップされた際の処理
     func transitionToTweetEditorView() {
-        print("ツイートボタンがタップされました")
+        let storyboard = UIStoryboard(name: "EditorViewController", bundle: nil)
+        guard let editorViewController = storyboard.instantiateInitialViewController() as? EditorViewController else { return }
+        present(editorViewController, animated: true)
     }
 
 }
