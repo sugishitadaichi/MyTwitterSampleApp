@@ -8,12 +8,23 @@
 import UIKit
 
 class EditorViewController: UIViewController {
+    @IBOutlet weak var tweetToViewButton: UIButton!
     @IBOutlet weak var editorView: UITextView!
     
     var text: String = ""
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureTweetToViewButton()
+    }
+    
     func configure(memo: Tweet) {
         text = memo.text
         print("データは\(text)です。")
+    }
+    //　ツイートボタンの仕様
+    func configureTweetToViewButton() {
+        tweetToViewButton.layer.cornerRadius = tweetToViewButton.bounds.width / 2
     }
 }
