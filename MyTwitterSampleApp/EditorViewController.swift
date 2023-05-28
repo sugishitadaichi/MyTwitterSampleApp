@@ -25,6 +25,7 @@ class EditorViewController: UIViewController {
     }
     //　ツイートボタンの仕様
     func configureTweetToViewButton() {
-        tweetToViewButton.layer.cornerRadius = tweetToViewButton.bounds.width / 2
+        tweetToViewButton.layer.cornerRadius = 10
+        tweetToViewButton.clipsToBounds = true
     }
 }
