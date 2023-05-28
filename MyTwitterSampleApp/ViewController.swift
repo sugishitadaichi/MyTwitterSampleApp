@@ -69,9 +69,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     //　＋ボタンがタップされた際の処理
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let editorViewControllerstoryboad = UIStoryboard(name: "EditorViewController", bundle: nil)
+        _ = UIStoryboard(name: "EditorViewController", bundle: nil)
         let editorViewController = storyboard?.instantiateViewController(identifier: "EditorViewController") as! EditorViewController
-        navigationController?.pushViewController(editorViewController, animated: true)
+        present(editorViewController, animated: true)
     
     }
 
