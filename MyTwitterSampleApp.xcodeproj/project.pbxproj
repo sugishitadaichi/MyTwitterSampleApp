@@ -16,6 +16,8 @@
 		710C124529F64C2D003B8FE0 /* MyTwitterSampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C124429F64C2D003B8FE0 /* MyTwitterSampleAppTests.swift */; };
 		710C124F29F64C2D003B8FE0 /* MyTwitterSampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C124E29F64C2D003B8FE0 /* MyTwitterSampleAppUITests.swift */; };
 		710C125129F64C2D003B8FE0 /* MyTwitterSampleAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 710C125029F64C2D003B8FE0 /* MyTwitterSampleAppUITestsLaunchTests.swift */; };
+		7110ACE52A17B9FD00D013EF /* EditorViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7110ACE42A17B9FD00D013EF /* EditorViewController.storyboard */; };
+		7110ACE72A17BA5000D013EF /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7110ACE62A17BA5000D013EF /* EditorViewController.swift */; };
 		717CF7062A078DF6008D5182 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717CF7042A078DF6008D5182 /* MainTableViewCell.swift */; };
 		717CF7072A078DF6008D5182 /* MainTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 717CF7052A078DF6008D5182 /* MainTableViewCell.xib */; };
 		71AEC8ED2A0626BE003B40EC /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71AEC8EC2A0626BE003B40EC /* Tweet.swift */; };
@@ -52,6 +54,8 @@
 		710C124A29F64C2D003B8FE0 /* MyTwitterSampleAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyTwitterSampleAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		710C124E29F64C2D003B8FE0 /* MyTwitterSampleAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTwitterSampleAppUITests.swift; sourceTree = "<group>"; };
 		710C125029F64C2D003B8FE0 /* MyTwitterSampleAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTwitterSampleAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7110ACE42A17B9FD00D013EF /* EditorViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditorViewController.storyboard; sourceTree = "<group>"; };
+		7110ACE62A17BA5000D013EF /* EditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		717CF7042A078DF6008D5182 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		717CF7052A078DF6008D5182 /* MainTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainTableViewCell.xib; sourceTree = "<group>"; };
 		71AEC8EC2A0626BE003B40EC /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
@@ -115,6 +119,8 @@
 				71AEC8EC2A0626BE003B40EC /* Tweet.swift */,
 				717CF7042A078DF6008D5182 /* MainTableViewCell.swift */,
 				717CF7052A078DF6008D5182 /* MainTableViewCell.xib */,
+				7110ACE42A17B9FD00D013EF /* EditorViewController.storyboard */,
+				7110ACE62A17BA5000D013EF /* EditorViewController.swift */,
 			);
 			path = MyTwitterSampleApp;
 			sourceTree = "<group>";
@@ -241,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710C123A29F64C2D003B8FE0 /* LaunchScreen.storyboard in Resources */,
+				7110ACE52A17B9FD00D013EF /* EditorViewController.storyboard in Resources */,
 				710C123729F64C2D003B8FE0 /* Assets.xcassets in Resources */,
 				717CF7072A078DF6008D5182 /* MainTableViewCell.xib in Resources */,
 				710C123529F64C2B003B8FE0 /* Main.storyboard in Resources */,
@@ -269,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				710C123229F64C2B003B8FE0 /* ViewController.swift in Sources */,
+				7110ACE72A17BA5000D013EF /* EditorViewController.swift in Sources */,
 				710C122E29F64C2B003B8FE0 /* AppDelegate.swift in Sources */,
 				710C123029F64C2B003B8FE0 /* SceneDelegate.swift in Sources */,
 				71AEC8ED2A0626BE003B40EC /* Tweet.swift in Sources */,
