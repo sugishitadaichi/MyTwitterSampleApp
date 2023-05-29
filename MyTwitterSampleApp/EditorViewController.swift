@@ -8,6 +8,10 @@
 import UIKit
 
 class EditorViewController: UIViewController {
+    @IBAction func cancelButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var tweetToViewButton: UIButton!
     @IBOutlet weak var editorView: UITextView!
     
