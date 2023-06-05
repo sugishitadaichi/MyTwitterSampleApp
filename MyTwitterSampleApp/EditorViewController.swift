@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class EditorViewController: UIViewController {
     @IBAction func cancelButton(_ sender: Any) {
