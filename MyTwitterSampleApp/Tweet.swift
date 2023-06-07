@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import RealmSwift
 
-struct Tweet {
+class Tweet: Object {
     // ツイート本文
-    let text: String
-    let userName: String
+    @objc dynamic var id: String = UUID().uuidString //データを一意に識別するための識別子
+    @objc dynamic var text: String = ""
+    @objc dynamic var userName: String = ""
 }

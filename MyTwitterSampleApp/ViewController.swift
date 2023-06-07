@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
@@ -33,15 +34,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
-        let tweetPost1 = Tweet(text: "あいうえおかきくけこたちつてとなにぬねのはひふへほまみむめも", userName: "daichi")
-        let tweetPost2 = Tweet(text: "かきくけこかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめも", userName: "saki")
-        let tweetPost3 = Tweet(text: "さしすせそ", userName: "yamato")
-        let tweetPost4 = Tweet(text: "たちつてとかきくけこたちつてとなにぬねの", userName: "makoto")
-        let tweetPost5 = Tweet(text: "なにぬねのかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめも", userName: "yoshihiro")
-        
-        let dummyList = [ tweetPost1, tweetPost2, tweetPost3, tweetPost4, tweetPost5, ]
-         dummyList.forEach { tweet in tweetList.append(tweet) }
-        
+        let realm = try! Realm()
+        let result = realm.objects(Tweet.self)
+        tweetList = Array(result)
 
     }
     
