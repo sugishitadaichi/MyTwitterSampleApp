@@ -34,25 +34,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
-        let tweetPost1 = Tweet()
-        tweetPost1.text = "あいうえおかきくけこたちつてとなにぬねのはひふへほまみむめも"
-        tweetPost1.userName = "daichi"
-        let tweetPost2 = Tweet()
-        tweetPost2.text = "かきくけこかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめも"
-        tweetPost2.userName = "saki"
-        let tweetPost3 = Tweet()
-        tweetPost3.text = "saki"
-        tweetPost3.userName = "yamato"
-        let tweetPost4 = Tweet()
-        tweetPost4.text = "たちつてとかきくけこたちつてとなにぬねの"
-        tweetPost4.userName = "makoto"
-        let tweetPost5 = Tweet()
-        tweetPost5.text = "なにぬねのかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめもかきくけこたちつてとなにぬねのはひふへほまみむめも"
-        tweetPost5.userName = "yoshihiro"
-        
-        let dummyList = [ tweetPost1, tweetPost2, tweetPost3, tweetPost4, tweetPost5, ]
-         dummyList.forEach { tweet in tweetList.append(tweet) }
-        
+        let realm = try! Realm()
+        let result = realm.objects(Tweet.self)
+        tweetList = Array(result)
 
     }
     
@@ -85,8 +69,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(editorViewController, animated: true)
     
     }
-    
-    func saveDate() {}
 
 }
         
