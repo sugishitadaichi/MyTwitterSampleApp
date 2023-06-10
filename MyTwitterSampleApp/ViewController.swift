@@ -31,11 +31,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // setTweet関数をホーム画面が表示度に反映させる
-        setTweet()
-        tableView.reloadData()
+    class viewWillAppear {
+        let editorViewController = EditorViewController()
+        func tweetToView() {
+            editorViewController.tweetToViewButton()
+        }
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
