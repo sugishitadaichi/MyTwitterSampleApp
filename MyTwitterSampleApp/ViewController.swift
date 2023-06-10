@@ -26,11 +26,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.register(UINib(nibName: "MainTableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
-        // setTweet関数をホーム画面が表示された際に反映させる
-        setTweet()
         //　configureTweetButton関数をホーム画面が表示された際に反映させる
         configureTweetButton()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // setTweet関数をホーム画面が表示度に反映させる
+        setTweet()
+        tableView.reloadData()
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
@@ -52,17 +57,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.userName.text = tweet.userName
         return cell
     }
-    //　ツイートボタンの仕様
+    //　＋ボタンの仕様
     func configureTweetButton() {
         addButton.layer.cornerRadius = addButton.bounds.width / 2
     }
-    //　ツイートボタンがタップされた際の処理
+    //　＋ボタンがタップされた際に画面遷移する処理
     func transitionToTweetEditorView() {
         let storyboard = UIStoryboard(name: "EditorViewController", bundle: nil)
         guard let editorViewController = storyboard.instantiateInitialViewController() as? EditorViewController else { return }
         present(editorViewController, animated: true)
     }
-    //　＋ボタンがタップされた際の処理
+    //　＋ボタンがタップされた際の処理？
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = UIStoryboard(name: "EditorViewController", bundle: nil)
         let editorViewController = storyboard?.instantiateViewController(identifier: "EditorViewController") as! EditorViewController

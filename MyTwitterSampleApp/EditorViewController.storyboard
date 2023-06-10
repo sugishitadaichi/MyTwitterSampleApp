@@ -23,10 +23,10 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="ツイート"/>
                                 <connections>
-                                    <action selector="tweetToButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="u7V-nL-dEN"/>
+                                    <action selector="tweetToViewButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AG1-wF-6Rl"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="tweetText" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lf4-Bp-hey">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="tweetTest" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="lf4-Bp-hey">
                                 <rect key="frame" x="10" y="133.33333333333331" width="383" height="635.66666666666674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
