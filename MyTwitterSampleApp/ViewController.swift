@@ -8,7 +8,11 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewWillApperDelegate {
+    func tweetToView() {
+        editorViewContoller.tweetToViewButton(UIButton)
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addButton: UIButton!
     @IBAction func addButton(_ sender: UIButton) {
@@ -19,6 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     //ツイートプロパティ
     var tweetList: [Tweet] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +38,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     class viewWillAppear {
         let editorViewController = EditorViewController()
+        var tweet = Tweet()
         func tweetToView() {
-            editorViewController.tweetToViewButton()
+            editorViewController.saveDate(with: tweet.text)
+            editorViewController.transitionToTweetMainView()
         }
+        editorViewController.delegate = self
     }
     // ツイートを格納するためのメソッド
     func setTweet() {
