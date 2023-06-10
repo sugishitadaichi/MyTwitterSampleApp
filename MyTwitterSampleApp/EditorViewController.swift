@@ -45,19 +45,20 @@ class EditorViewController: UIViewController {
             realm.add(tweet)
         }
         print("text: \(tweet.text)")
+        dismiss(animated: true)
 
     }
-    //　＋ボタンがタップされた際に画面遷移する処理
+    //　ツイートボタンがタップされた際に画面遷移する処理
     func transitionToTweetMainView() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let viewController = storyboard.instantiateInitialViewController() as? ViewController else { return }
         present(viewController, animated: true)
     }
-    //　＋ボタンがタップされた際の処理？
+    //　ツイートボタンがタップされた際の処理？
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         _ = UIStoryboard(name: "Main", bundle: nil)
-        let editorViewController = storyboard?.instantiateViewController(identifier: "ViewController") as! ViewController
-        present(editorViewController, animated: true)
+        let viewController = storyboard?.instantiateViewController(identifier: "ViewController") as! ViewController
+        present(viewController, animated: true)
     
     }
 }
