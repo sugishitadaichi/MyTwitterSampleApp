@@ -14,6 +14,8 @@ protocol ViewWillApperDelegate {
 
 class EditorViewController: UIViewController {
     @IBAction func tweetToViewButton(_ sender: UIButton) {
+        let updatedText = editorView.text ?? ""
+        saveDate(with: updatedText)
         delegate?.tweetToView()
 
     }
@@ -69,6 +71,5 @@ class EditorViewController: UIViewController {
 
 extension EditorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        tweetToViewButton(sender: UIButton)
     }
 }
