@@ -10,7 +10,8 @@ import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewWillApperDelegate {
     func tweetToView() {
-        editorViewContoller.tweetToViewButton(UIButton)
+        setTweet()
+        tableView.reloadData()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -36,15 +37,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    class viewWillAppear {
-        let editorViewController = EditorViewController()
-        var tweet = Tweet()
-        func tweetToView() {
-            editorViewController.saveDate(with: tweet.text)
-            editorViewController.transitionToTweetMainView()
-        }
-        editorViewController.delegate = self
-    }
+
     // ツイートを格納するためのメソッド
     func setTweet() {
         let realm = try! Realm()
@@ -74,6 +67,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let storyboard = UIStoryboard(name: "EditorViewController", bundle: nil)
         guard let editorViewController = storyboard.instantiateInitialViewController() as? EditorViewController else { return }
         present(editorViewController, animated: true)
+
+        editorViewController.delegate = self
     }
     //　＋ボタンがタップされた際の処理？
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
