@@ -69,7 +69,6 @@ class EditorViewController: UIViewController {
 
 extension EditorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
-        let updatedText = editorView.text ?? ""
-        saveDate(with: updatedText)
+        tweetToViewButton(sender: UIButton)
     }
 }
