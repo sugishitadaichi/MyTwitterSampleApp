@@ -8,10 +8,14 @@
 import UIKit
 import RealmSwift
 
+protocol ViewWillApperDelegate {
+    func tweetToView()
+}
+
 class EditorViewController: UIViewController {
     @IBAction func tweetToViewButton(_ sender: UIButton) {
-        saveDate(with: tweet.text)
-        transitionToTweetMainView()
+        var delegate: ViewWillApperDelegate?
+        delegate?.tweetToView()
 
     }
     @IBAction func cancelButton(_ sender: UIButton) {
