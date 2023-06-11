@@ -14,7 +14,6 @@ protocol ViewWillApperDelegate {
 
 class EditorViewController: UIViewController {
     @IBAction func tweetToViewButton(_ sender: UIButton) {
-        var delegate: ViewWillApperDelegate?
         delegate?.tweetToView()
 
     }
@@ -26,6 +25,7 @@ class EditorViewController: UIViewController {
     @IBOutlet weak var editorView: UITextView!
     
     var tweet = Tweet()
+    var delegate: ViewWillApperDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
