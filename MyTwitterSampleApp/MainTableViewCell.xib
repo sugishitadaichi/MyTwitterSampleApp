@@ -38,9 +38,12 @@
                         <color key="tintColor" systemColor="labelColor"/>
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="削除"/>
+                        <connections>
+                            <action selector="deleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1fJ-x8-UVG"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-h4-zwr">
-                        <rect key="frame" x="10" y="10" width="115" height="21"/>
+                        <rect key="frame" x="6" y="10" width="115" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="RdN-xB-J2h"/>
                         </constraints>

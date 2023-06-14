@@ -9,6 +9,17 @@ import UIKit
 import RealmSwift
 
 class MainTableViewCell: UITableViewCell {
+    @IBAction func deleteButton(_ sender: UIButton) {
+        let realm = try!Realm()
+        let deletePost = realm.objects(Tweet.self).filter("id").first
+        
+        if let deletePost = deletePost {
+            try! realm.write {
+                realm.delete(deletePost)
+            }
+        }
+        
+    }
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var userName: UILabel!
