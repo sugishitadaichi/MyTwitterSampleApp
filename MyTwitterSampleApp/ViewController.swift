@@ -42,7 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     // ツイートを格納するためのメソッド
     func setTweet() {
         let realm = try! Realm()
-        let result = realm.objects(Tweet.self)
+        let result = realm.objects(Tweet.self).sorted(byKeyPath: "recordDate", ascending: false)
         tweetList = Array(result)
 
     }
