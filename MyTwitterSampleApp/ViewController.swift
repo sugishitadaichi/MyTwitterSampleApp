@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView = UIView()
         //　configureTweetButton関数をホーム画面が表示された際に反映させる
         configureTweetButton()
+        tweetToView()
 
     }
     
