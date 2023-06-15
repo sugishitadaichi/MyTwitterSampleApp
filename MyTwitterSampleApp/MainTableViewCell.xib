@@ -39,11 +39,11 @@
                         <state key="normal" title="Button"/>
                         <buttonConfiguration key="configuration" style="plain" title="削除"/>
                         <connections>
-                            <action selector="deleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="1fJ-x8-UVG"/>
+                            <action selector="deleteButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bFv-EX-5Ot"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uT7-h4-zwr">
-                        <rect key="frame" x="6" y="10" width="115" height="21"/>
+                        <rect key="frame" x="10" y="10" width="115" height="21"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="115" id="RdN-xB-J2h"/>
                         </constraints>
@@ -63,7 +63,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="deleteButton" destination="Ifn-Ib-fU0" id="zHk-DJ-KQ7"/>
+                <outlet property="deleteButton" destination="Ifn-Ib-fU0" id="aLi-pk-XyA"/>
                 <outlet property="editButton" destination="o5I-Zu-f3f" id="dsY-sk-Hhv"/>
                 <outlet property="label" destination="Q0e-Et-H5I" id="Tpe-TD-Oz4"/>
                 <outlet property="userName" destination="uT7-h4-zwr" id="K1h-lW-WBO"/>
