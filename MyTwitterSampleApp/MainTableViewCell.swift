@@ -8,12 +8,16 @@
 import UIKit
 import RealmSwift
 
+protocol MainTableViewCellDelegate {
+    func deleteTweet()
+}
+
 class MainTableViewCell: UITableViewCell {
     @IBAction func deleteButton(_ sender: UIButton) {
         let realm = try!Realm()
-        let id = try!ObjectId(from: Tweet.self as! Decoder)
-        let deletePost = realm.objects(Tweet.self).filter("id = ObjectId").first
-        
+        guard let tweet = tweet else { return }
+        let deletePost = realm.objects(Tweet.self).filter("id == %@", tweet.id).first
+        delegate?.deleteTweet()
         if let deletePost = deletePost {
             try! realm.write {
                 realm.delete(deletePost)
@@ -21,6 +25,8 @@ class MainTableViewCell: UITableViewCell {
         }
         
     }
+    var tweet: Tweet?
+    var delegate: MainTableViewCellDelegate?
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var editButton: UIButton!
     @IBOutlet weak var userName: UILabel!

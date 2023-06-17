@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-protocol ViewWillApperDelegate {
+protocol EditorViewControllerDelegate {
     func tweetToView()
 }
 
@@ -27,7 +27,7 @@ class EditorViewController: UIViewController {
     @IBOutlet weak var editorView: UITextView!
     
     var tweet = Tweet()
-    var delegate: ViewWillApperDelegate?
+    var delegate: EditorViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
