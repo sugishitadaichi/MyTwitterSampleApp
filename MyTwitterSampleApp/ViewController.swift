@@ -15,8 +15,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func deleteTweet() {
-        deletedTweet()
-        
+        setTweet()
+        tableView.reloadData()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -56,18 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    var tweet: Tweet?
-    
-    func deletedTweet() {
-        let realm = try!Realm()
-        guard let tweet = tweet else { return }
-        let deletePost = realm.objects(Tweet.self).filter("id == %@", tweet.id).first
-        if let deletePost = deletePost {
-            try! realm.write {
-                realm.delete(deletePost)
-            }
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweetList.count
