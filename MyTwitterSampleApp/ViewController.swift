@@ -8,10 +8,15 @@
 import UIKit
 import RealmSwift
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ViewWillApperDelegate {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditorViewControllerDelegate, MainTableViewCellDelegate {
     func tweetToView() {
         setTweet()
         tableView.reloadData()
+    }
+    
+    func deleteTweet() {
+        deletedTweet()
+        
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -38,6 +43,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        deleteTweet()
+    }
+    
 
     // ツイートを格納するためのメソッド
     func setTweet() {
@@ -45,6 +54,19 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let result = realm.objects(Tweet.self).sorted(byKeyPath: "recordDate", ascending: false)
         tweetList = Array(result)
 
+    }
+    
+    var tweet: Tweet?
+    
+    func deletedTweet() {
+        let realm = try!Realm()
+        guard let tweet = tweet else { return }
+        let deletePost = realm.objects(Tweet.self).filter("id == %@", tweet.id).first
+        if let deletePost = deletePost {
+            try! realm.write {
+                realm.delete(deletePost)
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -56,6 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let tweet = tweetList[indexPath.row]
         cell.label.text = tweet.text
+        cell.tweet = tweet
         cell.userName.text = tweet.userName
         return cell
     }
