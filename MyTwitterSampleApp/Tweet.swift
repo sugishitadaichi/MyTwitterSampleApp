@@ -8,10 +8,14 @@
 import Foundation
 import RealmSwift
 
-class Tweet: Object {
+class Tweet: Object,ObjectKeyIdentifiable {
     // ツイート本文
-    @objc dynamic var id: String = UUID().uuidString //データを一意に識別するための識別子
-    @objc dynamic var text: String = ""
-    @objc dynamic var userName: String = ""
-    @objc dynamic var recordDate: Date = Date()
+    @Persisted(primaryKey: true) var id: ObjectId //データを一意に識別するための識別子
+    @Persisted var text: String = ""
+    @Persisted var userName: String = ""
+    @Persisted var recordDate: Date = Date()
+    @Persisted var persistedShare:Bool = true
+    var share:Bool = false
+    
+
 }

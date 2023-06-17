@@ -11,7 +11,8 @@ import RealmSwift
 class MainTableViewCell: UITableViewCell {
     @IBAction func deleteButton(_ sender: UIButton) {
         let realm = try!Realm()
-        let deletePost = realm.objects(Tweet.self).filter("id").first
+        let id = try!ObjectId(from: Tweet.self as! Decoder)
+        let deletePost = realm.objects(Tweet.self).filter("id = ObjectId").first
         
         if let deletePost = deletePost {
             try! realm.write {
