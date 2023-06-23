@@ -9,7 +9,7 @@ import UIKit
 import RealmSwift
 
 protocol MainTableViewCellDelegate {
-    func deleteTweet()
+    func deleteTweet(indexPath: IndexPath)
 }
 
 class MainTableViewCell: UITableViewCell {
@@ -17,14 +17,22 @@ class MainTableViewCell: UITableViewCell {
         let realm = try!Realm()
         guard let tweet = tweet else { return }
         let deletePost = realm.objects(Tweet.self).filter("id == %@", tweet.id).first
-        delegate?.deleteTweet()
-        if let deletePost = deletePost {
+        print("idを取得しました")
+        
+        if let deletePost {
             try! realm.write {
                 realm.delete(deletePost)
             }
         }
-        
+        delegate?.deleteTweet(indexPath: IndexPath)
+        print("deletePostを実行しました")
     }
+    
+    func configure() {
+        guard let indexPath = indexPath else { return }
+        textLabel?.text = "Row: \(indexPath.row), Section: \(indexPath.section)"
+    }
+    var indexPath: IndexPath?
     var tweet: Tweet?
     var delegate: MainTableViewCellDelegate?
     @IBOutlet weak var deleteButton: UIButton!
