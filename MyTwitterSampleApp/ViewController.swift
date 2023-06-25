@@ -15,8 +15,27 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func deleteTweet(indexPath: IndexPath) {
-        tweetList.removeAtIndex(indexPath.row)
+        // Realmのインスタンス化
+        let realm = try!Realm()
+        //　tweetListのインデックス番号のidをtarget定数に取得
+        let target = tweetList[indexPath.row].id
+        //　targetと同じidを持つRealmデータベース内のデータを検索してdeletePostに格納
+        let deletePost = realm.objects(Tweet.self).filter("id == %@", target).first
+        //　もしもdeletePostがnilでなければ以下を実行
+        if let deletePost {
+            //　reaimの書き込み
+            try! realm.write {
+                //　deletePostをRealmから削除
+                realm.delete(deletePost)
+            }
+            
+        }
+        //　tweetListの配列からインデックス番号に該当する配列を削除
+        tweetList.remove(at: indexPath.row)
+        //　デーブルビューからインデックス番号に該当するセルを削除
         tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
+        //　テーブルビューの再読み込み
+        tableView.reloadData()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -39,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView = UIView()
         //　configureTweetButton関数をホーム画面が表示された際に反映させる
         configureTweetButton()
-        tweetToView()
+        tweetToView() 
 
     }
     
@@ -68,7 +87,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.tweet = tweet
         cell.userName.text = tweet.userName
         cell.indexPath = indexPath
-        cell.configure()
+        //　デリゲートの登録
+        cell.delegate = self
         return cell
     }
     //　＋ボタンの仕様

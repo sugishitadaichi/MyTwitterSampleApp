@@ -9,23 +9,13 @@ import UIKit
 import RealmSwift
 
 protocol MainTableViewCellDelegate {
-    func deleteTweet(indexPath: IndexPath)
+    func deleteTweet(indexPath: IndexPath) 
 }
 
 class MainTableViewCell: UITableViewCell {
     @IBAction func deleteButton(_ sender: UIButton) {
-        let realm = try!Realm()
-        guard let tweet = tweet else { return }
-        let deletePost = realm.objects(Tweet.self).filter("id == %@", tweet.id).first
-        print("idを取得しました")
-        
-        if let deletePost {
-            try! realm.write {
-                realm.delete(deletePost)
-            }
-        }
-        delegate?.deleteTweet(indexPath: IndexPath)
-        print("deletePostを実行しました")
+        //　あくまで処理を実行するのはViewControllerなので、これだけでOK
+        delegate?.deleteTweet(indexPath: indexPath!)
     }
     
     func configure() {
