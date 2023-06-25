@@ -28,6 +28,7 @@ class EditorViewController: UIViewController {
     
     var tweet = Tweet()
     var delegate: EditorViewControllerDelegate?
+    var isEdit = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,7 @@ class EditorViewController: UIViewController {
     
     func configure(memo: Tweet) {
         tweet.text = memo.text
+        editorView.text = String(tweet.text)
     }
     //　ツイートボタンの仕様
     func configureTweetToViewButton() {

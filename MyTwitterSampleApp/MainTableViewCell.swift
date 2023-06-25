@@ -12,7 +12,13 @@ protocol MainTableViewCellDelegate {
     func deleteTweet(indexPath: IndexPath) 
 }
 
-class MainTableViewCell: UITableViewCell {
+class MainTableViewCell: UITableViewCell, UITableViewDelegate{
+    
+    //　編集ボタンを押す処理の追加
+    @IBAction func editButton(_ sender: UIButton) {
+        transitionToEditedTweetView()
+        
+    }
     @IBAction func deleteButton(_ sender: UIButton) {
         //　あくまで処理を実行するのはViewControllerなので、これだけでOK
         delegate?.deleteTweet(indexPath: indexPath!)
@@ -56,4 +62,11 @@ class MainTableViewCell: UITableViewCell {
         deleteButton.clipsToBounds = true
         
     }
+    //　編集ボタンがタップされた際の処理
+    func transitionToEditedTweetView() {
+        let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
+        guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
+        present(editorViewController, animated: true)
+    }
+    
 }
