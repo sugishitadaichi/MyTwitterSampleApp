@@ -14,9 +14,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    func deleteTweet() {
-        deletedTweet()
-        
+    func deleteTweet(indexPath: IndexPath) {
+        tweetList.removeAtIndex(indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -43,9 +43,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        deleteTweet()
-    }
+
     
 
     // ツイートを格納するためのメソッド
@@ -56,18 +54,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
     }
     
-    var tweet: Tweet?
-    
-    func deletedTweet() {
-        let realm = try!Realm()
-        guard let tweet = tweet else { return }
-        let deletePost = realm.objects(Tweet.self).filter("id == %@", tweet.id).first
-        if let deletePost = deletePost {
-            try! realm.write {
-                realm.delete(deletePost)
-            }
-        }
-    }
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tweetList.count
@@ -80,6 +67,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.label.text = tweet.text
         cell.tweet = tweet
         cell.userName.text = tweet.userName
+        cell.indexPath = indexPath
+        cell.configure()
         return cell
     }
     //　＋ボタンの仕様
