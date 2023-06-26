@@ -9,6 +9,13 @@ import UIKit
 import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditorViewControllerDelegate, MainTableViewCellDelegate {
+    //　編集ボタンがタップされた際の処理
+    func transitionToEditedTweetView() {
+        let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
+        guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
+        present(editorViewController, animated: true)
+    }
+    
     func tweetToView() {
         setTweet()
         tableView.reloadData()
@@ -87,7 +94,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.tweet = tweet
         cell.userName.text = tweet.userName
         cell.indexPath = indexPath
-        //　デリゲートの登録
+        //　デリゲートの登録(複数可？)
         cell.delegate = self
         return cell
     }

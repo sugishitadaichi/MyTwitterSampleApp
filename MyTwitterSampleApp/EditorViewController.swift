@@ -24,7 +24,10 @@ class EditorViewController: UIViewController {
     }
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var tweetToViewButton: UIButton!
+    
     @IBOutlet weak var editorView: UITextView!
+    //　文字数を140文字以内に定義
+    let maxWritewordLength = 140
     
     var tweet = Tweet()
     var delegate: EditorViewControllerDelegate?
@@ -73,5 +76,17 @@ class EditorViewController: UIViewController {
 
 extension EditorViewController: UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
+    }
+}
+//　文字数制限機能の追加
+extension EditorViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard editorView.text != nil else { return }
+        
+        if editorView.text.count > maxWritewordLength {
+            //　最大文字数を超えた場合は切り捨て
+            editorView.text = String(editorView.text.prefix(maxWritewordLength))
+            
+        }
     }
 }
