@@ -10,10 +10,20 @@ import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditorViewControllerDelegate, MainTableViewCellDelegate {
     //　編集ボタンがタップされた際の処理
-    func transitionToEditedTweetView() {
-        let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
-        guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
-        present(editorViewController, animated: true)
+    func transitionToEditedTweetView(indexPath: IndexPath) {
+        // Realmのインスタンス化
+        let realm = try!Realm()
+        //　tweetListのインデックス番号のidをeditTarget定数に取得
+        let editTarget = tweetList[indexPath.row].id
+        //　targetと同じidを持つRealmデータベース内のデータを検索してeditPostに格納
+        let editPost = realm.objects(Tweet.self).filter("id == %@", editTarget).first
+        //　もしもeditPostがnilでなければ以下を実行
+        if editPost != nil {
+            // 画面遷移処理（記載済みのテキストデータが必要？）
+            let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
+            guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
+            present(editorViewController, animated: true)
+        }
     }
     
     func tweetToView() {
@@ -96,6 +106,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.indexPath = indexPath
         //　デリゲートの登録(複数可？)
         cell.delegate = self
+        cell.setupEditButton()
+        cell.setupDeleteButton()
         return cell
     }
     //　＋ボタンの仕様
