@@ -22,6 +22,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // 画面遷移処理（記載済みのテキストデータが必要？）
             let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
             guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
+            editorViewController.tweet = editPost ?? Tweet()
             present(editorViewController, animated: true)
         }
     }
