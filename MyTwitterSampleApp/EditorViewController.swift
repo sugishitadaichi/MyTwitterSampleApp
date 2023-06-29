@@ -35,6 +35,8 @@ class EditorViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //　editorViewのtextにtweetの内容を代入
+        editorView.text = String(tweet.text)
         
         configureTweetToViewButton()
         editorView.delegate = self
