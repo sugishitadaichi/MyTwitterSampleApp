@@ -9,6 +9,24 @@ import UIKit
 import RealmSwift
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, EditorViewControllerDelegate, MainTableViewCellDelegate {
+    //　編集ボタンがタップされた際の処理
+    func transitionToEditedTweetView(indexPath: IndexPath) {
+        // Realmのインスタンス化
+        let realm = try!Realm()
+        //　tweetListのインデックス番号のidをeditTarget定数に取得
+        let editTarget = tweetList[indexPath.row].id
+        //　targetと同じidを持つRealmデータベース内のデータを検索してeditPostに格納
+        let editPost = realm.objects(Tweet.self).filter("id == %@", editTarget).first
+        //　もしもeditPostがnilでなければ以下を実行
+        if editPost != nil {
+            // 画面遷移処理（記載済みのテキストデータが必要？）
+            let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
+            guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
+            editorViewController.tweet = editPost ?? Tweet()
+            present(editorViewController, animated: true)
+        }
+    }
+    
     func tweetToView() {
         setTweet()
         tableView.reloadData()
@@ -58,8 +76,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView = UIView()
         //　configureTweetButton関数をホーム画面が表示された際に反映させる
         configureTweetButton()
-        tweetToView() 
-
+        tweetToView()
     }
     
 
@@ -87,8 +104,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.tweet = tweet
         cell.userName.text = tweet.userName
         cell.indexPath = indexPath
-        //　デリゲートの登録
+        //　デリゲートの登録(複数可？)
         cell.delegate = self
+        cell.setupEditButton()
+        cell.setupDeleteButton()
         return cell
     }
     //　＋ボタンの仕様

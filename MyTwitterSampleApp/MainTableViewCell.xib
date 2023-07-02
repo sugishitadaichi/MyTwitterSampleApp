@@ -67,7 +67,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="deleteButton" destination="Ifn-Ib-fU0" id="aLi-pk-XyA"/>
-                <outlet property="editButton" destination="o5I-Zu-f3f" id="dsY-sk-Hhv"/>
+                <outlet property="editButton" destination="o5I-Zu-f3f" id="KkD-uM-nbm"/>
                 <outlet property="label" destination="Q0e-Et-H5I" id="Tpe-TD-Oz4"/>
                 <outlet property="userName" destination="uT7-h4-zwr" id="K1h-lW-WBO"/>
             </connections>
