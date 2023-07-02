@@ -22,14 +22,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // 画面遷移処理（記載済みのテキストデータが必要？）
             let storyboad = UIStoryboard(name: "EditorViewController", bundle: nil)
             guard let editorViewController = storyboad.instantiateInitialViewController() as? EditorViewController else { return }
+            //記載済みのテキストデータを取得
             editorViewController.tweet = editPost ?? Tweet()
             present(editorViewController, animated: true)
+            editorViewController.delegate = self
         }
     }
     
     func tweetToView() {
         setTweet()
+        print("setTweetが実行されました")
         tableView.reloadData()
+        print("tabelViewが実行されました")
     }
     
     func deleteTweet(indexPath: IndexPath) {
@@ -76,7 +80,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.tableFooterView = UIView()
         //　configureTweetButton関数をホーム画面が表示された際に反映させる
         configureTweetButton()
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tweetToView()
+        print("tabelViewが実行されました3")
     }
     
 
