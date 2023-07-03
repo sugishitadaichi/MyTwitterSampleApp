@@ -16,7 +16,9 @@ class EditorViewController: UIViewController {
     @IBAction func tweetToViewButton(_ sender: UIButton) {
         let updatedText = editorView.text ?? ""
         saveDate(with: updatedText)
+        print("saveDateが実行されました")
         delegate?.tweetToView()
+        print("delegate?.tweetToView()が実行されました")
 
     }
     @IBAction func cancelButton(_ sender: UIButton) {
@@ -37,7 +39,7 @@ class EditorViewController: UIViewController {
         super.viewDidLoad()
         //　editorViewのtextにtweetの内容を代入
         editorView.text = String(tweet.text)
-        
+            
         configureTweetToViewButton()
         editorView.delegate = self
     }
