@@ -16,10 +16,7 @@ class EditorViewController: UIViewController {
     @IBAction func tweetToViewButton(_ sender: UIButton) {
         let updatedText = editorView.text ?? ""
         saveDate(with: updatedText)
-        print("saveDateが実行されました")
         delegate?.tweetToView()
-        print("delegate?.tweetToView()が実行されました")
-
     }
     @IBAction func cancelButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
@@ -28,8 +25,7 @@ class EditorViewController: UIViewController {
     @IBOutlet weak var tweetToViewButton: UIButton!
     
     @IBOutlet weak var editorView: UITextView!
-    //　文字数を140文字以内に定義
-    let maxWritewordLength = 140
+
     
     var tweet = Tweet()
     var delegate: EditorViewControllerDelegate?
@@ -41,7 +37,6 @@ class EditorViewController: UIViewController {
         editorView.text = String(tweet.text)
             
         configureTweetToViewButton()
-        editorView.delegate = self
     }
     
     func configure(memo: Tweet) {
@@ -78,19 +73,17 @@ class EditorViewController: UIViewController {
     }
 }
 
-extension EditorViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-    }
-}
 //　文字数制限機能の追加
 extension EditorViewController: UITextFieldDelegate {
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        guard editorView.text != nil else { return }
-        
-        if editorView.text.count > maxWritewordLength {
-            //　最大文字数を超えた場合は切り捨て
-            editorView.text = String(editorView.text.prefix(maxWritewordLength))
-            
-        }
+    //　入力制限を140文字以内で設定
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        //　最大文字数を140文字以内で設定
+        let maxLength = 140
+        //　現在入力されている文字数を取得
+        let currentString: NSString = editorView.text as NSString
+        //　更新された文字数の取得、にゅうりょk酢荒れる度に判定する、判定はテキストビューのテキストの長さ
+        let updatedString = currentString.replacingCharacters(in: range, with: text)
+        //　更新された文字数(最終文字数)が最大値以下であればtrueを返却
+        return updatedString.count <= maxLength
     }
 }

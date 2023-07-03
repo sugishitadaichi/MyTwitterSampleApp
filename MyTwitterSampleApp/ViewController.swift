@@ -31,9 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tweetToView() {
         setTweet()
-        print("setTweetが実行されました")
         tableView.reloadData()
-        print("tabelViewが実行されました")
     }
     
     func deleteTweet(indexPath: IndexPath) {
@@ -86,7 +84,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tweetToView()
-        print("tabelViewが実行されました3")
     }
     
 
