@@ -35,6 +35,8 @@ class EditorViewController: UIViewController {
         super.viewDidLoad()
         //　editorViewのtextにtweetの内容を代入
         editorView.text = String(tweet.text)
+        //UITextViewDelegateを反映させる
+        editorView.delegate = self
             
         configureTweetToViewButton()
     }
@@ -74,15 +76,16 @@ class EditorViewController: UIViewController {
 }
 
 //　文字数制限機能の追加
-extension EditorViewController: UITextFieldDelegate {
+extension EditorViewController: UITextViewDelegate {
     //　入力制限を140文字以内で設定
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         //　最大文字数を140文字以内で設定
         let maxLength = 140
         //　現在入力されている文字数を取得
         let currentString: NSString = editorView.text as NSString
-        //　更新された文字数の取得、にゅうりょk酢荒れる度に判定する、判定はテキストビューのテキストの長さ
+        //　更新された文字数の取得、入力される度に判定する、判定はテキストビューのテキストの長さ
         let updatedString = currentString.replacingCharacters(in: range, with: text)
+        print("文字数制限が適用されました")
         //　更新された文字数(最終文字数)が最大値以下であればtrueを返却
         return updatedString.count <= maxLength
     }
