@@ -55,4 +55,8 @@ class MainTableViewCell: UITableViewCell, UITableViewDelegate{
         deleteButton.clipsToBounds = true
         
     }
+    
+    func myName() {
+        userName.text = "daichi"
+    }
 }

@@ -115,6 +115,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.delegate = self
         cell.setupEditButton()
         cell.setupDeleteButton()
+        cell.myName()
         return cell
     }
     //　＋ボタンの仕様
