@@ -32,5 +32,33 @@ final class MyTwitterSampleAppTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
+    //　ViewController用テスト実装
+    func testVCOutput() throws {
+        let vc = ViewController()
+        let number = vc.vcOutput(number: 22)
+        XCTAssertEqual(22, number)
+    }
+    
+    //　EditorViewController用テスト実装(number2=文字数制限のテストコード)
+    func testEVCOutput() throws {
+        let evc = EditorViewController()
+        let number1 = evc.evcOutput(number: 22)
+        let number2 = evc.exEVCOutput(number: 23)
+        XCTAssertEqual(22, number1)
+        XCTAssertEqual(23, number2)
+    }
+    
+    //　MainTableViewCell用のテスト実装
+    func testMTVCOutput() throws {
+        let mtvc = MainTableViewCell()
+        let number = mtvc.mtvcOutput(number: 22)
+        XCTAssertEqual(22, number)
+    }
+    //　Tweet用のテスト実装
+    func testTweetOutput() throws {
+        let tweet = Tweet()
+        let number = tweet.tweetOutput(number: 22)
+        XCTAssertEqual(22, number)
+    }
 
 }

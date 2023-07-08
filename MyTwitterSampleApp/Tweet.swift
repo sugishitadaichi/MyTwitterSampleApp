@@ -17,5 +17,9 @@ class Tweet: Object,ObjectKeyIdentifiable {
     @Persisted var persistedShare:Bool = true
     var share:Bool = false
     
+    //　テスト用
+    func tweetOutput(number: Int?) -> Int? {
+        return number
+    }
 
 }

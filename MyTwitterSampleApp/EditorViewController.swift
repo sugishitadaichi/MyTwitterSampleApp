@@ -73,6 +73,10 @@ class EditorViewController: UIViewController {
         present(viewController, animated: true)
     
     }
+    //　テスト用
+    func evcOutput(number: Int?) -> Int? {
+        return number
+    }
 }
 
 //　文字数制限機能の追加
@@ -88,5 +92,9 @@ extension EditorViewController: UITextViewDelegate {
         print("文字数制限が適用されました")
         //　更新された文字数(最終文字数)が最大値以下であればtrueを返却
         return updatedString.count <= maxLength
+    }
+    //　テスト用
+    func exEVCOutput(number: Int?) -> Int? {
+        return number
     }
 }

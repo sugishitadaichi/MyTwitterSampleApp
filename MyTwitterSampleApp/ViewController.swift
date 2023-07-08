@@ -137,6 +137,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         present(editorViewController, animated: true)
     
     }
+    //　テスト用
+    func vcOutput(number: Int?) -> Int? {
+        return number
+    }
 
 }
         

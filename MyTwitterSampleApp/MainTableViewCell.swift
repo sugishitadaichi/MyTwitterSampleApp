@@ -55,8 +55,12 @@ class MainTableViewCell: UITableViewCell, UITableViewDelegate{
         deleteButton.clipsToBounds = true
         
     }
-    
+    //　ユーザー名をdaichiに設定
     func myName() {
         userName.text = "daichi"
+    }
+    //　テスト用
+    func mtvcOutput(number: Int?) -> Int? {
+        return number
     }
 }
