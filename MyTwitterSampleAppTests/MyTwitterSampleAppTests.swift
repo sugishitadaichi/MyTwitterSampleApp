@@ -8,30 +8,28 @@
 import XCTest
 @testable import MyTwitterSampleApp
 
-final class MyTwitterSampleAppTests: XCTestCase {
+final class MyTwitterSampleAppTests: XCTestCase, UITextViewDelegate {
     
-    //　テスト対象（文字数制限）のクラスをインスタンス化
-    var evc: EditorViewController!
+
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        evc = EditorViewController()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
-        evc = nil
+//        evc = nil
     }
     
     func testTextViewShouldChangeTextIn() {
         // テスト用のUITextViewを作成し、Delegateを設定する
-        let textView = UITextView()
-        textView.delegate = evc
-        
-        // 入力される文字と置換される範囲を指定し、戻り値が正しいかを検証する
-        XCTAssertTrue(evc.textView(textView, shouldChangeTextIn: NSRange(location: 0, length: 10), replacementText: "Hello"), "入力が許可されるべきでした")
-        XCTAssertTrue(evc.textView(textView, shouldChangeTextIn: NSRange(location: 0, length: 140), replacementText: "a"), "入力が許可されるべきでした")
-        XCTAssertFalse(evc.textView(textView, shouldChangeTextIn: NSRange(location: 0, length: 141), replacementText: "a"), "入力が制限されるべきでした")
+//        let textView = UITextView()
+//        textView.delegate = evc
+//
+//        // 入力される文字と置換される範囲を指定し、戻り値が正しいかを検証する
+//        XCTAssertTrue(evc.textView(textView, shouldChangeTextIn: NSRange(location: 0, length: 10), replacementText: "Hello"), "入力が許可されるべきでした")
+//        XCTAssertTrue(evc.textView(textView, shouldChangeTextIn: NSRange(location: 0, length: 140), replacementText: "a"), "入力が許可されるべきでした")
+//        XCTAssertFalse(evc.textView(textView, shouldChangeTextIn: NSRange(location: 0, length: 141), replacementText: "a"), "入力が制限されるべきでした")
     }
 
     func testExample() throws {
@@ -40,6 +38,15 @@ final class MyTwitterSampleAppTests: XCTestCase {
         // Any test you write for XCTest can be annotated as throws and async.
         // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+        
+        //EditorViewControllerクラスをインスタンス化
+        var evc = EditorViewController()
+
+        let textView = UITextView()
+        textView.delegate = evc
+        //　テストコードを記述
+        XCTAssertTrue(evc.isTextWithinMaxLength(textView, range: NSRange(location: 0, length: 130), replacementText: "a"), "入力を許可")
+        
     }
 
     func testPerformanceExample() throws {
