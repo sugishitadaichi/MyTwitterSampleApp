@@ -45,7 +45,7 @@ final class MyTwitterSampleAppTests: XCTestCase, UITextViewDelegate {
         let textView = UITextView()
         textView.delegate = evc
         //　テストコードを記述
-        XCTAssertTrue(evc.isTextWithinMaxLength(textView, range: NSRange(location: 0, length: 130), replacementText: "a"), "入力を許可")
+        XCTAssertTrue(evc.isTextWithinMaxLength(textView, range: NSRange(location: 0, length: 140), replacementText: "a"), "入力を許可")
         
     }
 
