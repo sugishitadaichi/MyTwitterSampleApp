@@ -94,10 +94,11 @@ extension EditorViewController: UITextViewDelegate {
             //　現在入力されている文字数を取得
             let currentString = editorView.text
             //　更新された文字数の取得、入力される度に判定する、判定はテキストビューのテキストの長さ
-            let updatedString = currentString?.replacingCharacters(in: NSRange(location: 0, length: currentString?.count ?? 0), with: text)
+            guard let updatedString = currentString else { return (0 != 0) }
+            let updatedCheckString = currentString?.replacingCharacters(in: NSRange(location: 0, length: currentString?.count ?? 0), with: updatedString)
             print("文字数制限が適用されました")
             //　更新された文字数(最終文字数)が最大値以下であればtrueを返却
-            return updatedString.count <= maxLength
+            return updatedCheckString.count <= maxLength
         }
     //　テスト用
     func exEVCOutput(number: Int?) -> Int? {
