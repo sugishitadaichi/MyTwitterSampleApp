@@ -40,12 +40,18 @@ final class MyTwitterSampleAppTests: XCTestCase, UITextViewDelegate {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
         
         //EditorViewControllerクラスをインスタンス化
-        var evc = EditorViewController()
+        let evc = EditorViewController()
+        
+        //140文字以上のテキスト
+        let overText1 = "１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９"
+        //140文字以下のテキスト
+        let overText2 = "１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９１２３４５６７８９"
+        
 
-        let textView = UITextView()
-        textView.delegate = evc
-        //　テストコードを記述
-        XCTAssertTrue(evc.isTextWithinMaxLength(textView, range: NSRange(location: 0, length: 140), replacementText: "a"), "入力を許可")
+        //　テストコードを記述(140文字以上であればFalseを返す)
+        XCTAssertFalse(evc.isTextWithinMaxLength(text: overText1))
+        //　テストコードを記述(140文字以下であればTrueを返す)
+        XCTAssertTrue(evc.isTextWithinMaxLength(text: overText2))
         
     }
 
